@@ -14,7 +14,6 @@ function Feed() {
         .orderBy("timestamp", "desc")
         .onSnapshot(snapshot => {
             setPosts(snapshot.docs.map((doc) => ({ id: doc.id, data: doc.data() })))
-            console.log(posts)
         })
     }, [])
 
@@ -24,7 +23,7 @@ function Feed() {
            <MessageSender />
 
            {posts.map((post) => (
-               <Post 
+               <Post
                 key={post.id}
                 profilePic={post.data.profilePic}
                 message={post.data.message}

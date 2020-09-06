@@ -21,9 +21,10 @@ function MessageSender() {
             message: input,
             timestamp: firebase.firestore.FieldValue.serverTimestamp(),
             profilePic: user.photoURL,
+            username: user.displayName,
             image: imageUrl,
         });
-        
+
         setInput("");
         setimageUrl("");
     }
@@ -33,18 +34,18 @@ function MessageSender() {
             <div className="messageSender__top">
                 <Avatar src={user.photoURL} />
             <form>
-                <input 
+                <input
                     value={input}
                     onChange={(e) => setInput(e.target.value)}
-                    placeholder={`What´s on your mind? ${user.displayName}`} 
+                    placeholder={`What´s on your mind? ${user.displayName}`}
                     className="messageSender__input"
-                /> 
-                <input 
-                    type="text" 
+                />
+                <input
+                    type="text"
                     value={imageUrl}
                     onChange={(e) => setimageUrl(e.target.value)}
-                    placeholder="Image URL (Optional)" 
-                /> 
+                    placeholder="Image URL (Optional)"
+                />
 
                 <button onClick={handleSubmit} type="submit">
                     Hidden submit
